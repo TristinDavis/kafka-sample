@@ -1,0 +1,41 @@
+
+---[ RabbitShopPro - Apache Kafka sample - Used links - Kafka ]---
+
+
+---[ Theory
+
+DONE
+https://kafka.apache.org/quickstart
+https://www.tutorialspoint.com/apache_kafka/apache_kafka_basic_operations.htm
+https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes
+https://www.codenotfound.com/categories/#spring-kafka
+http://www.baeldung.com/spring-kafka
+
+IN PROGRESS
+https://www.codenotfound.com/spring-kafka-consumer-producer-example.html [testing]
+
+TODO
+https://docs.spring.io/spring-kafka/reference/htmlsingle/
+https://www.safaribooksonline.com/library/view/kafka-the-definitive/9781491936153/ch04.html
+https://www.javaworld.com/article/3060078/big-data/big-data-messaging-with-kafka-part-1.html
+https://www.javaworld.com/article/3066873/big-data/big-data-messaging-with-kafka-part-2.html
+
+
+---[ Frameworks/Platforms
+
+-
+
+
+---[ Code
+
+https://stackoverflow.com/questions/46231719/java-lang-nosuchmethoderror-org-springframework-kafka-listener-adapter-messagin
+https://github.com/spring-cloud/spring-cloud-release/issues/70
+https://github.com/spring-projects/spring-boot/issues/8290
+https://stackoverflow.com/questions/18689365/how-to-add-xlintunchecked-to-my-android-gradle-based-project
+
+
+
+---[ Repo / Examples
+
+https://github.com/eugenp/tutorials/tree/master/spring-kafka/src/main/java/com/baeldung/spring/kafka
+https://github.com/code-not-found/spring-kafka/tree/master/spring-kafka-helloworld

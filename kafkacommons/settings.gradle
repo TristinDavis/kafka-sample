@@ -1,0 +1,4 @@
+// *** KafkaSample - Commons ***
+
+// Root project (ArtifactID)
+rootProject.name = 'kafkacommons'

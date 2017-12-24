@@ -1,0 +1,8 @@
+// *** KafkaSample - Consumer ***
+
+// Root project (ArtifactID)
+rootProject.name = 'kafkaconsumer'
+
+// Inclusions
+include ':kafkacommons'
+project(':kafkacommons').projectDir = new File(settingsDir, '../kafkacommons')

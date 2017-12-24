@@ -1,0 +1,31 @@
+
+---[ RabbitShopPro - Apache Kafka sample - Used links - Jackson ]---
+
+
+---[ Theory
+
+DONE
+https://geowarin.github.io/jsr310-dates-with-jackson.html
+
+IN PROGRESS
+-
+
+TODO
+http://www.baeldung.com/jackson
+http://www.baeldung.com/jackson-nested-values
+http://www.baeldung.com/jackson-serialize-dates
+
+
+---[ Frameworks/Platforms
+
+-
+
+
+---[ Code
+
+https://stackoverflow.com/questions/26219788/gradle-does-not-include-optional-dependency
+
+
+---[ Repo / Examples
+
+-
