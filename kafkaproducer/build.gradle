@@ -4,9 +4,9 @@
 buildscript {
 	ext {
 //		springBootVersion = '1.5.9.RELEASE'
-		springBootVersion = '2.0.0.M7'
+		springBootVersion = '2.0.1.RELEASE'
 //		springKafkaVersion = '1.3.2.RELEASE'
-		springKafkaVersion = '2.1.0.RELEASE'
+		springKafkaVersion = '2.1.5.RELEASE'
 		slf4jVersion = '1.7.25'
 		lombokVersion = '1.16.18'
 		dockerPluginVersion = '1.2'

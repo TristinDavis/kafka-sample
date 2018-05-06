@@ -142,7 +142,7 @@ public class KafkaConsumerConfig {
 		// allows a pool of processes to divide the work of consuming and processing records
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, getGroupId());
 		props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, getAutoOffsetReset());
-		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
 		// props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "100");
 		// props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "15000");
 		return props;

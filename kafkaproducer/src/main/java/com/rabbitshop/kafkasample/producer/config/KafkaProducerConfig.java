@@ -142,8 +142,8 @@ public class KafkaProducerConfig {
 		log.info("JSON ObjectMapper {}", jsonObjectMapper);
 
 		final JsonSerializer<V> jsonSerializer = new JsonSerializer<>(jsonObjectMapper);
-		// compatible just with version > 2.1.0
-		// jsonSerializer.setAddTypeInfo(false);
+		// compatible just with spring-kafka version > 2.1.0
+		jsonSerializer.setAddTypeInfo(false);
 		return jsonSerializer;
 	}
 

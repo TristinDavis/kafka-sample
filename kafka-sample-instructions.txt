@@ -1,33 +1,51 @@
 
----[ Kafka sample ]---
+---[ Kafka sample - Instructions ]---
+
 
 Start Zookeeper
+	$ cd /path/to/kafka/bin
 	$ ./zookeeper-server-start.sh -daemon ../config/zookeeper.properties
+		or to see logs
+	$ ./zookeeper-server-start.sh ../config/zookeeper.properties
 
 Start Kafka
+	$ cd /path/to/kafka/bin
 	$ ./kafka-server-start.sh -daemon ../config/server.properties
+		or to see logs
+	$ ./kafka-server-start.sh ../config/server.properties
 
 Create required topics
+	$ cd /path/to/kafka/bin
 	$ ./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic rabbitsimple
 	$ ./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic rabbitcomplex
 	$ ./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic rabbitnested
 
+
+
 List topics
+	$ cd /path/to/kafka/bin
 	$ ./kafka-topics.sh --list --zookeeper localhost:2181
 
 Start Producer
-	...
+	$ cd /path/to/kafkasample/kafkaproducer/
+	$ ./gradlew clean build
+	$ ./gradlew bootRun
+		or java -jar build/libs/kafkaproducer-0.1.jar
 
 Start Consumer
-	...
+	$ cd /path/to/kafkasample/kafkaconsumer/
+	$ ./gradlew clean build
+	$ ./gradlew bootRun
+		or java -jar build/libs/kafkaconsumer-0.1.jar
 
-... testing ...
 
-Stop Producer
-	...
 
-Stop Consumer
-	...
+Testing with Postaman
+	import the postman collection in /path/to/kafkasample/postman
+	execute some requests against the producer and look at the console of the consumer what's happen
+	execute some requests against the consumer and verify if the results are same as consumer's logs
+
+
 
 Stop Kafka
 	$ ./kafka-server-stop.sh
