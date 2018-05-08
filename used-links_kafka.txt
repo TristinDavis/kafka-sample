@@ -13,6 +13,7 @@ http://www.baeldung.com/spring-kafka
 
 IN PROGRESS
 https://www.codenotfound.com/spring-kafka-consumer-producer-example.html [testing]
+https://stackoverflow.com/questions/47953901/spring-kafka-producer-not-sending-to-kafka-1-0-0-magic-v1-does-not-support-reco
 
 TODO
 https://docs.spring.io/spring-kafka/reference/htmlsingle/
