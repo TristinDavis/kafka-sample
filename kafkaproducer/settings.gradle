@@ -1,8 +1,0 @@
-// *** KafkaSample - Producer ***
-
-// Root project (ArtifactID)
-rootProject.name = 'kafkaproducer'
-
-// Inclusions
-include ':kafkacommons'
-project(':kafkacommons').projectDir = new File(settingsDir, '../kafkacommons')

@@ -1,0 +1,35 @@
+
+---[ Kafka sample - Used links - Others ]---
+
+
+---[ Theory
+
+DONE
+[spring]
+http://www.baeldung.com/spring-scheduled-tasks
+[others]
+http://www.baeldung.com/java-uuid
+http://www.baeldung.com/java-generate-random-long-float-integer-double
+
+IN PROGRESS
+-
+
+TODO
+[kubernetes]
+https://github.com/Yolean/kubernetes-kafka
+
+
+---[ Frameworks/Platforms
+
+-
+
+
+---[ Code
+
+https://github.com/spring-cloud/spring-cloud-release/issues/70
+https://github.com/spring-projects/spring-boot/issues/8290
+
+
+---[ Repo / Examples
+
+-

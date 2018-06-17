@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.rabbitshop.kafkasample</groupId>
+	<artifactId>kafka-commons</artifactId>
+	<version>0.1</version>
+	<packaging>jar</packaging>
+
+	<name>kafka-commons</name>
+	<description>Commons objects, configurations and others between KafkaProducer and KafkaConsumer</description>
+
+	<properties>
+		<!-- general -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java-source.version>1.8</java-source.version>
+		<java-target.version>1.8</java-target.version>
+
+		<!-- maven -->
+		<maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+
+		<!-- spring -->
+		<spring.version>5.0.2.RELEASE</spring.version>
+
+		<!-- logging -->
+		<slf4.version>1.7.25</slf4.version>
+
+		<!-- Others -->
+		<jackson.version>2.9.3</jackson.version>
+		<lombok.version>1.16.22</lombok.version>
+	</properties>
+
+	<dependencies>
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4.version}</version>
+		</dependency>
+
+		<!-- others -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- plugins -->
+		<plugins>
+			<!-- compiler -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java-source.version}</source>
+					<target>${java-target.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

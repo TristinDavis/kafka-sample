@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.rabbitshop.kafkasample</groupId>
+	<artifactId>kafka-consumer</artifactId>
+	<version>0.1</version>
+	<packaging>jar</packaging>
+
+	<name>kafka-consumer</name>
+	<description>KafkaConsumer sample</description>
+
+	<properties>
+		<!-- general -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java-source.version>1.8</java-source.version>
+		<java-target.version>1.8</java-target.version>
+
+		<!-- maven -->
+		<maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+
+		<!-- kafka-commons -->
+		<kafka-commons.version>0.1</kafka-commons.version>
+
+		<!-- spring -->
+		<spring-boot.version>2.0.2.RELEASE</spring-boot.version>
+		<!-- spring-cloud version 2.0.0 is buggy together with spring-boot ecosystem -->
+		<spring-cloud.version>Finchley.RC2</spring-cloud.version>
+		<spring-kafka.version>2.1.6.RELEASE</spring-kafka.version>
+
+		<!-- metrics -->
+		<micrometer-prometheus.version>1.0.4</micrometer-prometheus.version>
+		<project13-git-plugin.version>2.2.4</project13-git-plugin.version>
+
+		<!-- logging -->
+		<slf4.version>1.7.25</slf4.version>
+
+		<!-- others -->
+		<lombok.version>1.16.22</lombok.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<!-- spring -->
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- kafka-commons -->
+		<dependency>
+			<groupId>com.rabbitshop.kafkasample</groupId>
+			<artifactId>kafka-commons</artifactId>
+			<version>${kafka-commons.version}</version>
+		</dependency>
+
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- kafka -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>${spring-kafka.version}</version>
+		</dependency>
+
+		<!-- tracing -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+
+		<!-- application server-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+
+		<!-- metrics -->
+		<dependency>
+			<groupId>pl.project13.maven</groupId>
+			<artifactId>git-commit-id-plugin</artifactId>
+			<version>${project13-git-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+			<version>${micrometer-prometheus.version}</version>
+		</dependency>
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4.version}</version>
+		</dependency>
+
+		<!-- others -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- general -->
+		<finalName>${project.artifactId}</finalName>
+
+		<!-- plugins -->
+		<plugins>
+			<!-- compiler -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java-source.version}</source>
+					<target>${java-target.version}</target>
+				</configuration>
+			</plugin>
+
+			<!-- spring-boot -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-info</goal>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<additionalProperties>
+								<!-- TO-BE-TESTED -->
+								<source.encoding>${project.build.sourceEncoding}</source.encoding>
+								<report.encoding>${project.reporting.outputEncoding}</report.encoding>
+								<!---->
+								<java.source>${java-source.version}</java.source>
+								<java.target>${java-target.version}</java.target>
+							</additionalProperties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<!-- PLEASE NOTE: compatibility problems with JenkinsX -->
+		<!--<pluginManagement>-->
+		<!--<plugins>-->
+		<!--<plugin>-->
+		<!--<groupId>org.apache.maven.plugins</groupId>-->
+		<!--<artifactId>maven-deploy-plugin</artifactId>-->
+		<!--<version>${maven-deploy-plugin.version}</version>-->
+		<!--</plugin>-->
+		<!--</plugins>-->
+		<!--</pluginManagement>-->
+	</build>
+
+
+</project>
