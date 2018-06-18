@@ -12,14 +12,15 @@ https://www.codenotfound.com/categories/#spring-kafka
 http://www.baeldung.com/spring-kafka
 
 IN PROGRESS
-https://www.codenotfound.com/spring-kafka-consumer-producer-example.html [testing]
-https://stackoverflow.com/questions/47953901/spring-kafka-producer-not-sending-to-kafka-1-0-0-magic-v1-does-not-support-reco
+-
 
 TODO
 https://docs.spring.io/spring-kafka/reference/htmlsingle/
 https://www.safaribooksonline.com/library/view/kafka-the-definitive/9781491936153/ch04.html
 https://www.javaworld.com/article/3060078/big-data/big-data-messaging-with-kafka-part-1.html
 https://www.javaworld.com/article/3066873/big-data/big-data-messaging-with-kafka-part-2.html
+[testing]
+https://www.codenotfound.com/spring-kafka-consumer-producer-example.html
 
 
 ---[ Frameworks/Platforms
@@ -30,6 +31,7 @@ https://www.javaworld.com/article/3066873/big-data/big-data-messaging-with-kafka
 ---[ Code
 
 https://stackoverflow.com/questions/46231719/java-lang-nosuchmethoderror-org-springframework-kafka-listener-adapter-messagin
+https://stackoverflow.com/questions/47953901/spring-kafka-producer-not-sending-to-kafka-1-0-0-magic-v1-does-not-support-reco
 https://github.com/spring-cloud/spring-cloud-stream-binder-kafka/issues/290
 
 

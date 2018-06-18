@@ -1,0 +1,621 @@
+{
+	"info": {
+		"_postman_id": "1fdf12f8-ddb4-419a-831b-e92086cf429f",
+		"name": "KAFKA__TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "producer",
+			"description": null,
+			"item": [
+				{
+					"name": "Start ADD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7666b214-40e4-4a46-87c9-61475652dd7c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\":\"SIMPLE message from producer!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/start?operation=ADD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"start"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "ADD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start SUB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae3d87ae-7892-4c2d-87de-daeb9f1be675",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\":\"SIMPLE message from producer!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/start?operation=SUB",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"start"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "SUB"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start DEL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e737c024-0c21-4ef3-b611-5440f78037ca",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\":\"SIMPLE message from producer!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/start?operation=DEL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"start"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "DEL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get operations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e614932-5dc8-4104-9523-7298c985df0c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/operations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"operations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get total ADD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e614932-5dc8-4104-9523-7298c985df0c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/total?operation=ADD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"total"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "ADD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get total SUB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e614932-5dc8-4104-9523-7298c985df0c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/total?operation=SUB",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"total"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "SUB"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get total DEL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e614932-5dc8-4104-9523-7298c985df0c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/total?operation=DEL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"total"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "DEL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stop ADD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c4b1a209-674a-4bb9-b11c-2aa865da41ad",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\":\"SIMPLE message from producer!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/stop?operation=ADD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"stop"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "ADD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stop SUB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8049cefa-56a6-429a-ae9f-d015fc2f666f",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\":\"SIMPLE message from producer!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/stop?operation=SUB",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"stop"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "SUB"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stop DEL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0959f1a-d0ca-4378-90e4-e69168ab5a4e",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\":\"SIMPLE message from producer!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/stop?operation=DEL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"stop"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "DEL"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1188d471-d479-4efc-a15a-412403369ce1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "00c90f68-19f1-4bad-a399-51c70e796e07",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "consumer",
+			"description": null,
+			"item": [
+				{
+					"name": "Get inventory messages",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a74a1da8-b517-47e4-845f-f87acf288a72",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8182/kafka/consumer/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8182",
+							"path": [
+								"kafka",
+								"consumer",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e8881cff-a5ac-471b-9a8a-ea941b473a20",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0ec7c22-aad8-4551-abe0-9c2b67722b01",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

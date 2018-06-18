@@ -1,0 +1,32 @@
+
+---[ Kafka sample - Tech links ]---
+
+-[ kafka client
+
+-
+
+
+-[ kafka streams
+
+-
+
+
+-[ spring-kafka
+https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes
+https://www.codenotfound.com/categories/#spring-kafka
+http://www.baeldung.com/spring-kafka
+
+
+-[ spring-cloud-stream-kafka
+https://cloud.spring.io/spring-cloud-stream/
+https://dzone.com/articles/spring-cloud-stream-with-kafka
+https://github.com/spring-cloud/spring-cloud-stream-samples
+
+
+-[ tracing - opentracing kafka-spring
+https://github.com/opentracing-contrib/java-kafka-client
+https://github.com/jeqo/post-kafka-opentracing
+
+
+-[ others
+https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin

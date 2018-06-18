@@ -7,9 +7,14 @@
 DONE
 [spring]
 http://www.baeldung.com/spring-scheduled-tasks
+http://www.baeldung.com/spring-task-scheduler
+https://stackoverflow.com/questions/7107420/spring-scheduledtask-start-stop-support
+http://www.baeldung.com/spring-cloud-sleuth-single-application
+https://cloud.spring.io/spring-cloud-sleuth/single/spring-cloud-sleuth.html#_runnable_and_callable
 [others]
 http://www.baeldung.com/java-uuid
 http://www.baeldung.com/java-generate-random-long-float-integer-double
+https://stackoverflow.com/questions/39774427/springs-requestparam-with-enum
 
 IN PROGRESS
 -
