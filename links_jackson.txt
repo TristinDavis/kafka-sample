@@ -6,6 +6,8 @@
 
 DONE
 https://geowarin.github.io/jsr310-dates-with-jackson.html
+https://github.com/FasterXML/jackson-bom
+https://github.com/FasterXML/jackson-modules-java8
 
 IN PROGRESS
 -

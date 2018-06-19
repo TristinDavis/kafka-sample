@@ -27,10 +27,25 @@
 		<!-- logging -->
 		<slf4.version>1.7.25</slf4.version>
 
-		<!-- Others -->
-		<jackson.version>2.9.3</jackson.version>
+		<!-- jackson -->
+		<jackson.version>2.9.6</jackson.version>
+
+		<!-- others -->
 		<lombok.version>1.16.22</lombok.version>
 	</properties>
+
+	<!-- WARNING: somehow not importing properly jackson-databind -->
+	<!--<dependencyManagement>-->
+	<!--<dependencies>-->
+	<!--<dependency>-->
+	<!--<groupId>com.fasterxml.jackson</groupId>-->
+	<!--<artifactId>jackson-bom</artifactId>-->
+	<!--<version>${jackson.version}</version>-->
+	<!--<scope>import</scope>-->
+	<!--<type>pom</type>-->
+	<!--</dependency>-->
+	<!--</dependencies>-->
+	<!--</dependencyManagement>-->
 
 	<dependencies>
 		<!-- spring -->
@@ -52,13 +67,29 @@
 			<version>${slf4.version}</version>
 		</dependency>
 
-		<!-- others -->
+		<!-- jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-parameter-names</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jdk8</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
 
+		<!-- others -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

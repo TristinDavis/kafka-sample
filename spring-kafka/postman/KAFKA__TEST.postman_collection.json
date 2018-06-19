@@ -26,9 +26,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -79,9 +76,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -132,9 +126,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -169,50 +160,6 @@
 					"response": []
 				},
 				{
-					"name": "Get operations",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "6e614932-5dc8-4104-9523-7298c985df0c",
-								"type": "text/javascript",
-								"exec": [
-									"",
-									"tests[\"200 OK\"] = responseCode.code === 200;",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {},
-						"url": {
-							"raw": "http://localhost:8181/kafka/producer/operations",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8181",
-							"path": [
-								"kafka",
-								"producer",
-								"operations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Get total ADD",
 					"event": [
 						{
@@ -229,9 +176,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -279,9 +223,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -329,9 +270,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -379,9 +317,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -432,9 +367,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -485,9 +417,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -520,8 +449,73 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get operations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e614932-5dc8-4104-9523-7298c985df0c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8181/kafka/producer/operations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"kafka",
+								"producer",
+								"operations"
+							]
+						}
+					},
+					"response": []
 				}
 			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "producersecret",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "producer",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"type": "any"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -566,9 +560,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -594,6 +585,30 @@
 					"response": []
 				}
 			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "consumersecret",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "consumer",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"type": "any"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",

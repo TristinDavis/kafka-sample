@@ -28,7 +28,7 @@
 		<spring-boot.version>2.0.2.RELEASE</spring-boot.version>
 		<!-- spring-cloud version 2.0.0 is buggy together with spring-boot ecosystem -->
 		<spring-cloud.version>Finchley.RC2</spring-cloud.version>
-		<spring-kafka.version>2.1.6.RELEASE</spring-kafka.version>
+		<spring-kafka.version>2.1.7.RELEASE</spring-kafka.version>
 
 		<!-- metrics -->
 		<micrometer-prometheus.version>1.0.4</micrometer-prometheus.version>
@@ -38,10 +38,12 @@
 		<slf4.version>1.7.25</slf4.version>
 
 		<!-- others -->
+		<jackson.version>2.9.3</jackson.version>
 		<lombok.version>1.16.22</lombok.version>
 	</properties>
 
 	<repositories>
+		<!-- milestones -->
 		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
@@ -50,6 +52,15 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<!-- snapshots -->
+		<!--<repository>-->
+		<!--<id>spring-snapshots</id>-->
+		<!--<name>Spring Snapshots</name>-->
+		<!--<url>https://repo.spring.io/libs-snapshot</url>-->
+		<!--<snapshots>-->
+		<!--<enabled>true</enabled>-->
+		<!--</snapshots>-->
+		<!--</repository>-->
 	</repositories>
 
 	<dependencyManagement>
@@ -144,6 +155,12 @@
 		</dependency>
 
 		<!-- others -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

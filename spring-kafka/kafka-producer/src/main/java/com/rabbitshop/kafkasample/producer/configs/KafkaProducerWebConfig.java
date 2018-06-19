@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Configuration(value = "kafkaProducerWebConfig")
-@Order(3)
+@Order(20)
 public class KafkaProducerWebConfig extends WebMvcConfigurationSupport {
 
 	@Resource(name = "kafkaProducerOperationConverter")

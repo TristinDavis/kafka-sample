@@ -12,4 +12,8 @@ public final class KafkaProducerConstants {
 
 	public static final String SPRING_PROFILE_SCHEDULE = "schedule";
 
+	public static final String SPRING_PROFILE_OBJ_MAPPER = "objmapper";
+
+	public static final String SPRING_PROFILE_TYPE_HEADER = "typeheader";
+
 }

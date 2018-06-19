@@ -20,7 +20,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Profile(KafkaConsumerConstants.SPRING_PROFILE_SECURE)
 public class SecureSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	static String KAFKA_CONSUMER_URL_MATCHER = "/kafka/consumer/**";
+	// static String KAFKA_CONSUMER_URL_MATCHER = "/kafka/consumer/**";
 
 	/*
 	 * PLEASE NOTE: For sake of simplicity we are omitting specific security configurations
@@ -32,7 +32,7 @@ public class SecureSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 				.authorizeRequests()
-				.mvcMatchers(KAFKA_CONSUMER_URL_MATCHER).permitAll()
+				// .mvcMatchers(KAFKA_CONSUMER_URL_MATCHER).authenticated()
 				.anyRequest().authenticated()
 
 				.and()

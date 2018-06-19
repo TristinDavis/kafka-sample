@@ -38,12 +38,16 @@ public class KafkaConsumerServiceImpl implements KafkaConsumerService {
 		inventoryMessages = new ArrayList<>();
 
 		countDownLatch = new CountDownLatch(
-				getKafkaConsumerConfig().getCountDownLatchSeconds());
+				getKafkaConsumerConfig().getCountDownLatchSeconds()
+		);
 	}
 
 	@Override
-	@KafkaListener(topics = "${kafka.topic.id}", groupId = "${kafka.group.id}",
-			containerFactory = "inventoryKafkaListenerContainerFactory", errorHandler = "kafkaListenerErrorHandler")
+	@KafkaListener(
+			topics = "${kafka.topic.id}",
+			groupId = "${kafka.group.id}",
+			containerFactory = "inventoryKafkaListenerContainerFactory",
+			errorHandler = "kafkaListenerErrorHandler")
 	public void listenInventoryGroup(final InventoryMsg inventoryMsg) {
 
 		log.info("Received inventory message in topic {} of group {}: id {}, prodId {}, qty {}, op {}, date {}",
@@ -58,8 +62,7 @@ public class KafkaConsumerServiceImpl implements KafkaConsumerService {
 	@Override
 	public List<InventoryMsg> listInventoryMessages() {
 
-		log.debug("List all inventory messages received on topic {} ...",
-				getKafkaConsumerConfig().getTopicId());
+		log.debug("List all inventory messages received on topic {} ...", getKafkaConsumerConfig().getTopicId());
 
 		return getInventoryMessages();
 	}

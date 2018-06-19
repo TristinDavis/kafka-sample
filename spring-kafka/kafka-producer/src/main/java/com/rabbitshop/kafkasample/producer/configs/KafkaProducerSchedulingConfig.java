@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * PLEASE NOTE: This configuration class is just to enable the scheduling execution just when the profile "schedule" is active
  */
 @Configuration
-@Order(10)
+@Order(30)
 @Profile(KafkaProducerConstants.SPRING_PROFILE_SCHEDULE)
 @EnableScheduling
 public class KafkaProducerSchedulingConfig {

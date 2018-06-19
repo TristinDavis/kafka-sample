@@ -10,4 +10,8 @@ public final class KafkaConsumerConstants {
 
 	public static final String SPRING_PROFILE_INSECURE = "insecure";
 
+	public static final String SPRING_PROFILE_OBJ_MAPPER = "objmapper";
+
+	public static final String SPRING_PROFILE_TYPE_HEADER = "typeheader";
+
 }
