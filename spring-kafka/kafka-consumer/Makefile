@@ -6,7 +6,6 @@
 # VARIABLES
 
 NAME := kafka-consumer
-GIT_COMMIT_HASH := $(shell git log --pretty=format:'%h' -n 1)
 
 BUILD_TOOL := ./mvnw
 JAR_FILE := $(shell find build/libs -name '*.jar' 2>/dev/null)
@@ -37,7 +36,6 @@ print-variables :		## Print variables values
 	@echo "MAKEFILE_LIST: $(MAKEFILE_LIST)"
 	@echo "- - - "
 	@echo "NAME: $(NAME)"
-	@echo "GIT_COMMIT_HASH: $(GIT_COMMIT_HASH)"
 	@echo "- - - "
 	@echo "BUILD_TOOL: $(BUILD_TOOL)"
 	@echo "JAR_FILE: $(JAR_FILE)"
@@ -100,20 +98,20 @@ java-debug :		## Run the application in debug mode through the generated fat-jar
 # DOCKER
 
 docker-build : clean-build-test		## Build the docker IMAGE_NAME of the application
-	docker build -t $(IMAGE_NAME)-$(GIT_COMMIT_HASH):$(IMAGE_TAG) .
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
 
 docker-run : docker-build		## Run the containerised application through docker
-	docker run -d --name $(NAME) -p $(IMAGE_EXPOSE_PORT):$(IMAGE_EXPOSE_PORT) $(IMAGE_NAME)-$(GIT_COMMIT_HASH):$(IMAGE_TAG)
+	docker run -d --name $(NAME) -p $(IMAGE_EXPOSE_PORT):$(IMAGE_EXPOSE_PORT) $(IMAGE_NAME):$(IMAGE_TAG)
 
 docker-stop :		## Stop the containerised application
 	docker container stop -f $(NAME)
 
 docker-push : docker-build		## Push the docker application to the docker registry
-	docker push $(DOCKER_HOST_IP):$(DOCKER_HOST_PORT)/$(IMAGE_NAME)-$(GIT_COMMIT_HASH):$(IMAGE_TAG)
+	docker push $(DOCKER_HOST_IP):$(DOCKER_HOST_PORT)/$(IMAGE_NAME):$(IMAGE_TAG)
 
 docker-delete-local : docker-stop		## Delete the docker IMAGE_NAME of the application
 	docker container rm -f $(NAME)
 	docker image rm -f $(NAME)
 
 docker-delete-remote : docker-stop		## Delete the docker IMAGE_NAME of the application from the docker registry
-	docker image remove $(DOCKER_HOST_IP):$(DOCKER_HOST_PORT)/$(IMAGE_NAME)-$(GIT_COMMIT_HASH):$(IMAGE_TAG)
+	docker image remove $(DOCKER_HOST_IP):$(DOCKER_HOST_PORT)/$(IMAGE_NAME):$(IMAGE_TAG)

@@ -1,0 +1,117 @@
+
+### Kafka sample ###
+
+### commands
+#   Start
+#     docker swarm init
+#     docker stack deploy -c docker-compose.yml kafka
+#   Logs
+#     docker service logs -f kafka_zookeeper
+#     docker service logs -f kafka_kafka
+#     docker service logs -f kafka_producer
+#     docker service logs -f kafka_consumer
+#     docker service logs -f kafka_portainer
+#     docker service logs -f kafka_agent
+#   Stop
+#     docker stack rm kafka
+#     docker swarm leave -f
+
+### info
+version: '3.6'
+
+### networks
+networks:
+  kafka_n:
+    driver: overlay
+    # driver_opts:
+    #   encrypted: "true"
+
+### volumes
+# -
+
+### services
+# MISSING: zipkin, prometheus, grafana, kafka-monitor?
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    hostname: zookeeper
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 1s
+    volumes:
+      # - ~/.dockerhost/config/zookeeper/zoo_wurstmeister.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg
+      # - ~/.dockerhost/config/zookeeper:/opt/zookeeper-3.4.9/conf
+      - ~/.dockerhost/data/zookeeper/data:/opt/zookeeper-3.4.9/data
+      # - ~/.dockerhost/data/zookeeper/datalog:/opt/zookeeper-3.4.9/datalog
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+    networks:
+      - kafka_n
+  kafka:
+    image: wurstmeister/kafka
+    hostname: kafka
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 3s
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.178.21
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      # - ~/.dockerhost/config/kafka/server.properties:/opt/kafka/config/server.properties
+      - ~/.dockerhost/data/kafka:/kafka
+    ports:
+      - 9092:9092
+      - 7203:7203
+    networks:
+      - kafka_n
+  producer:
+    image: samples/kafka-producer
+    hostname: producer
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+    ports:
+      - 8181:8181
+    networks:
+      - kafka_n
+  consumer:
+    image: samples/kafka-consumer
+    hostname: consumer
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+    ports:
+      - 8182:8182
+    networks:
+      - kafka_n
+  # agent:
+  #   image: portainer/agent
+  #   # hostname: agent
+  #   deploy:
+  #     mode: global
+  #     restart_policy:
+  #       condition: any
+  #       delay: 1s
+  #   environment:
+  #     AGENT_CLUSTER_ADDR: tasks.agent
+  #     # AGENT_CLUSTER_ADDR: tasks.kafka_agent
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   ports:
+  #     - 9001:9001
+  #   networks:
+  #     - kafka_n
