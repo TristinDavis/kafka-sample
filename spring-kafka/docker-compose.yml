@@ -25,6 +25,10 @@ networks:
     driver: overlay
     # driver_opts:
     #   encrypted: "true"
+  portainer_n:
+    driver: overlay
+    # driver_opts:
+    #   encrypted: "true"
 
 ### volumes
 # -
@@ -98,20 +102,43 @@ services:
       - 8182:8182
     networks:
       - kafka_n
-  # agent:
-  #   image: portainer/agent
-  #   # hostname: agent
-  #   deploy:
-  #     mode: global
-  #     restart_policy:
-  #       condition: any
-  #       delay: 1s
-  #   environment:
-  #     AGENT_CLUSTER_ADDR: tasks.agent
-  #     # AGENT_CLUSTER_ADDR: tasks.kafka_agent
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   ports:
-  #     - 9001:9001
-  #   networks:
-  #     - kafka_n
+  agent:
+    image: portainer/agent
+    # hostname: agent
+    deploy:
+      mode: global
+      # restart_policy:
+      #   condition: any
+      #   delay: 1s
+    environment:
+      AGENT_CLUSTER_ADDR: tasks.agent
+      # AGENT_CLUSTER_ADDR: tasks.kafka_agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    # ports:
+    #   - 9001:9001
+    ports:
+      - target: 9001
+        published: 9001
+        protocol: tcp
+        mode: host
+    networks:
+      - portainer_n
+  portainer:
+    image: portainer/portainer
+    hostname: portainer
+    command: -H tcp://tasks.agent:9001 --tlsskipverify
+    deploy:
+      mode: replicated
+      replicas: 1
+      # restart_policy:
+      #   condition: any
+      #   delay: 1s
+      placement:
+        constraints: [node.role == manager]
+    volumes:
+      - ~/.dockerhost/data/portainer:/data
+    ports:
+      - "9000:9000"
+    networks:
+      - portainer_n
