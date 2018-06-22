@@ -104,19 +104,16 @@ services:
       - kafka_n
   agent:
     image: portainer/agent
-    # hostname: agent
+    hostname: agent
     deploy:
       mode: global
-      # restart_policy:
-      #   condition: any
-      #   delay: 1s
+      restart_policy:
+        condition: any
+        delay: 1s
     environment:
       AGENT_CLUSTER_ADDR: tasks.agent
-      # AGENT_CLUSTER_ADDR: tasks.kafka_agent
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    # ports:
-    #   - 9001:9001
     ports:
       - target: 9001
         published: 9001
@@ -131,9 +128,9 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-      # restart_policy:
-      #   condition: any
-      #   delay: 1s
+      restart_policy:
+        condition: any
+        delay: 3s
       placement:
         constraints: [node.role == manager]
     volumes:
