@@ -34,19 +34,6 @@
 		<lombok.version>1.16.22</lombok.version>
 	</properties>
 
-	<!-- WARNING: somehow not importing properly jackson-databind -->
-	<!--<dependencyManagement>-->
-	<!--<dependencies>-->
-	<!--<dependency>-->
-	<!--<groupId>com.fasterxml.jackson</groupId>-->
-	<!--<artifactId>jackson-bom</artifactId>-->
-	<!--<version>${jackson.version}</version>-->
-	<!--<scope>import</scope>-->
-	<!--<type>pom</type>-->
-	<!--</dependency>-->
-	<!--</dependencies>-->
-	<!--</dependencyManagement>-->
-
 	<dependencies>
 		<!-- spring -->
 		<dependency>

@@ -44,8 +44,8 @@ public class KafkaConsumerServiceImpl implements KafkaConsumerService {
 
 	@Override
 	@KafkaListener(
-			topics = "${kafka.topic.id}",
-			groupId = "${kafka.group.id}",
+			topics = "${kafka.inventory.topic.id}",
+			groupId = "${spring.kafka.consumer.group-id}",
 			containerFactory = "inventoryKafkaListenerContainerFactory",
 			errorHandler = "kafkaListenerErrorHandler")
 	public void listenInventoryGroup(final InventoryMsg inventoryMsg) {

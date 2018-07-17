@@ -7,10 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.kafka.annotation.EnableKafka;
+
+import java.util.List;
 
 
 /**
+ * SPRING-KAFKA DEFAULT CONFIGS
+ *
  * @EnableKafka annotation is required on the configuration class to enable detection of @KafkaListener annotation on spring managed beans.
  * <p>
  * For consuming messages, we need to configure a ConsumerFactory and a KafkaListenerContainerFactory. Once these beans are available in spring bean factory,
@@ -21,28 +24,27 @@ import org.springframework.kafka.annotation.EnableKafka;
 @Getter
 @Configuration(value = "kafkaConsumerConfig")
 @Order(10)
-@EnableKafka
 public class KafkaConsumerConfig {
 
-	@Value(value = "${kafka.bootstrap.server}")
-	@Getter(value = AccessLevel.PROTECTED)
-	String bootstrapServer;
+	@Value(value = "${spring.kafka.bootstrap-servers}")
+	List<String> bootstrapServers;
 
-	@Value(value = "${kafka.auto.offset.reset}")
-	@Getter(value = AccessLevel.PROTECTED)
+	@Value(value = "${spring.kafka.consumer.auto-offset-reset}")
 	String autoOffsetReset;
 
-	@Value(value = "${kafka.json.trusted.packages}")
-	@Getter(value = AccessLevel.PROTECTED)
-	String jsonTrustedPackages;
+	@Value(value = "${spring.kafka.client-id}")
+	String clientId;
 
-	@Value(value = "${kafka.group.id}")
+	@Value(value = "${spring.kafka.consumer.group-id}")
 	String groupId;
 
-	@Value(value = "${kafka.topic.id}")
+	@Value(value = "${kafka.inventory.topic.id:}")
 	String topicId;
 
-	@Value(value = "${kafka.countdown.latch.seconds}")
+	@Value(value = "${kafka.inventory.json.trusted.packages}")
+	String jsonTrustedPackages;
+
+	@Value(value = "${kafka.inventory.countdown.latch.seconds}")
 	int countDownLatchSeconds;
 
 }

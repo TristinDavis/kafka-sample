@@ -8,7 +8,11 @@
 NAME := kafka-consumer
 
 BUILD_TOOL := ./mvnw
-JAR_FILE := $(shell find build/libs -name '*.jar' 2>/dev/null)
+JAR_FILE := $(shell find target -name '*.jar' 2>/dev/null)
+# see https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/maven-plugin/run-mojo.html#jvmArguments
+MEM_OPTS := -Xms128m -Xmx128m
+JMX_OPTS := -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=38182 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+DEBUG_OPTS := -Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
 
 IMAGE_NAME := samples/$(NAME)
 IMAGE_TAG := latest
@@ -83,16 +87,16 @@ specific-test : clean-build		## Run Specific tests in the application
 # RUNNING
 
 run :		## Run the application through Spring Boot plugin
-	$(BUILD_TOOL) spring-boot:run -DskipTests
+	$(BUILD_TOOL) spring-boot:run -DskipTests -Dspring-boot.run.jvmArguments='$(MEM_OPTS) $(JMX_OPTS) $(OTHER_OPTS)'
 
 debug :		## Run the application in debug mode through Spring Boot plugin
-	$(BUILD_TOOL) spring-boot:run -DskipTests -Dexec.args='-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005'
+	$(BUILD_TOOL) spring-boot:run -DskipTests -Dspring-boot.run.jvmArguments='$(MEM_OPTS) $(JMX_OPTS) $(DEBUG_OPTS) $(OTHER_OPTS)'
 
 java-run :		## Run the application through the generated fat-jar
-	java -jar $(JAR_FILE)
+	java $(MEM_OPTS) $(JMX_OPTS) $(OTHER_OPTS) -jar $(JAR_FILE)
 
 java-debug :		## Run the application in debug mode through the generated fat-jar
-	java -jar $(JAR_FILE) -Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
+	java $(MEM_OPTS) $(JMX_OPTS) $(DEBUG_OPTS) $(OTHER_OPTS) -jar $(JAR_FILE)
 
 
 # DOCKER

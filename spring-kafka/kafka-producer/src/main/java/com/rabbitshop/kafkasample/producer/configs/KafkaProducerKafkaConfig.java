@@ -23,6 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * KAFKA CUSTOM CONFIGS
+ */
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -73,7 +76,7 @@ public class KafkaProducerKafkaConfig {
 		log.debug("Creating basic producer properties...");
 
 		final Map<String, Object> props = new HashMap<>();
-		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, getKafkaProducerConfig().getBootstrapServer());
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, getKafkaProducerConfig().getBootstrapServers());
 		props.put(ProducerConfig.RETRIES_CONFIG, getKafkaProducerConfig().getRetries());
 		// props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384);
 		// props.put(ProducerConfig.LINGER_MS_CONFIG, 1);

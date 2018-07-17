@@ -25,10 +25,7 @@ import java.util.Map;
 
 
 /**
- * @EnableKafka annotation is required on the configuration class to enable detection of @KafkaListener annotation on spring managed beans.
- * <p>
- * For consuming messages, we need to configure a ConsumerFactory and a KafkaListenerContainerFactory. Once these beans are available in spring bean factory,
- * POJO based consumers can be configured using @KafkaListener annotation.
+ * KAFKA CUSTOM CONFIGS
  */
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -73,7 +70,7 @@ public class KafkaConsumerKafkaConfig {
 		log.debug("Creating basic consumer properties...");
 
 		final Map<String, Object> properties = new HashMap<>();
-		properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, getKafkaConsumerConfig().getBootstrapServer());
+		properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, getKafkaConsumerConfig().getBootstrapServers());
 		// allows a pool of processes to divide the work of consuming and processing records
 		properties.put(ConsumerConfig.GROUP_ID_CONFIG, getKafkaConsumerConfig().getGroupId());
 		properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, getKafkaConsumerConfig().getAutoOffsetReset());
