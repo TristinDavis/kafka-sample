@@ -33,6 +33,9 @@
 		<micrometer-prometheus.version>1.0.4</micrometer-prometheus.version>
 		<project13-git-plugin.version>2.2.4</project13-git-plugin.version>
 
+		<!-- tracing -->
+		<opentracing-starter.version>0.1.13</opentracing-starter.version>
+
 		<!-- logging -->
 		<slf4.version>1.7.25</slf4.version>
 
@@ -114,9 +117,22 @@
 		</dependency>
 
 		<!-- tracing -->
+		<!-- spring-cloud-sleuth -->
+		<!--<dependency>-->
+		<!--<groupId>org.springframework.cloud</groupId>-->
+		<!--<artifactId>spring-cloud-starter-zipkin</artifactId>-->
+		<!--</dependency>-->
+		<!-- opentracing-jaeger -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zipkin</artifactId>
+			<groupId>io.opentracing.contrib</groupId>
+			<artifactId>opentracing-spring-cloud-starter-jaeger</artifactId>
+			<version>${opentracing-starter.version}</version>
+		</dependency>
+		<!-- opentracing-zipkin -->
+		<dependency>
+			<groupId>io.opentracing.contrib</groupId>
+			<artifactId>opentracing-spring-cloud-starter-zipkin</artifactId>
+			<version>${opentracing-starter.version}</version>
 		</dependency>
 
 		<!-- application server-->

@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.instrument.async.TraceableScheduledExecutorService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -64,17 +65,17 @@ public class KafkaProducerWebConfig extends WebMvcConfigurationSupport {
 	}
 
 	// Version 2 (uses Version 1) - ScheduledExecutorService (tracing already included)
-	// @Bean("kafkaProducerScheduledExecutorService")
-	// @Resource(name = "kafkaProducerTaskScheduler")
-	// public TraceableScheduledExecutorService executor(final ThreadPoolTaskScheduler threadPoolTaskScheduler) {
-	//
-	// 	log.debug("Creating TraceableScheduledExecutorService...");
-	//
-	// 	return new TraceableScheduledExecutorService(
-	// 			getBeanFactory(),
-	// 			threadPoolTaskScheduler.getScheduledExecutor()
-	// 	);
-	// }
+	@Bean("kafkaProducerScheduledExecutorService")
+	@Resource(name = "kafkaProducerTaskScheduler")
+	public TraceableScheduledExecutorService executor(final ThreadPoolTaskScheduler threadPoolTaskScheduler) {
+
+		log.debug("Creating TraceableScheduledExecutorService...");
+
+		return new TraceableScheduledExecutorService(
+				getBeanFactory(),
+				threadPoolTaskScheduler.getScheduledExecutor()
+		);
+	}
 
 	@Bean("kafkaProducerRunnableTasksMap")
 	@Autowired(required = false)

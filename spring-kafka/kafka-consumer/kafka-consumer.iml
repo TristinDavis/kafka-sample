@@ -67,34 +67,45 @@
     <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.lz4:lz4-java:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.1.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-zipkin:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-sleuth:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-rsa:1.0.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.56" level="project" />
-    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.56" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-cloud-starter-jaeger:0.1.13" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-cloud-starter:0.1.13" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-cloud:0.1.13" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.13" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-core:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.13" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-concurrent:0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-web-autoconfigure:0.2.1" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-web:0.2.1" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-web-servlet-filter:0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-tracerresolver:0.1.4" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-jdbc:0.0.6" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-rxjava-1:0.0.7" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-messaging-starter:0.0.5" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-messaging:0.0.5" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-mongo-driver:0.0.4" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign.opentracing:feign-hystrix-opentracing:0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign.opentracing:feign-opentracing:0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-jms-spring:0.0.5" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-jms-1:0.0.5" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-jms-common:0.0.5" level="project" />
+    <orderEntry type="library" name="Maven: io.jaegertracing:jaeger-core:0.27.0" level="project" />
+    <orderEntry type="library" name="Maven: io.jaegertracing:jaeger-thrift:0.27.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.thrift:libthrift:0.9.2" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing:opentracing-api:0.31.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing:opentracing-util:0.31.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing:opentracing-noop:0.31.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.4" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-spring-cloud-starter-zipkin:0.1.13" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.brave:brave-opentracing:0.31.1" level="project" />
     <orderEntry type="library" name="Maven: io.zipkin.brave:brave:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-context-log4j2:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-spring-web:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-http:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-spring-rabbit:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-kafka-clients:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-httpclient:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-httpasyncclient:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-spring-webmvc:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-servlet:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-zipkin:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.0.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.9.3" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.7.3" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-kafka11:2.7.3" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-amqp-client:2.7.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-tests:5.1.0" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.9.1" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-okhttp3:2.6.0" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.6.0" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-undertow:2.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.undertow:undertow-core:1.4.25.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.xnio:xnio-api:3.3.8.Final" level="project" />
