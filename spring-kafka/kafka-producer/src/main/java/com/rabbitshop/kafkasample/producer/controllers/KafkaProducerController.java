@@ -1,13 +1,12 @@
 package com.rabbitshop.kafkasample.producer.controllers;
 
-import brave.Tracing;
 import com.rabbitshop.kafkasample.producer.tasks.AbstractKafkaProducerRunnableTask;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +19,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 
@@ -38,19 +35,20 @@ public class KafkaProducerController {
 	@Resource(name = "kafkaProducerRunnableTasksMap")
 	Map<KafkaProducerOperation, AbstractKafkaProducerRunnableTask> runnableTasksMap;
 
-	// Version 1 - TaskScheduler + TraceRunnable
-	// @Resource(name = "kafkaProducerTaskScheduler")
-	// TaskScheduler taskScheduler;
+	// Version 1 - TaskScheduler
+	@Resource(name = "kafkaProducerTaskScheduler")
+	TaskScheduler taskScheduler;
 
 	// @Autowired
 	// SpanNamer spanNamer;
 
-	// Version 2 - TraceableScheduledExecutorService
-	@Resource(name = "kafkaProducerScheduledExecutorService")
-	ScheduledExecutorService scheduledExecutorService;
+	// Version 2a - TaskScheduler + TraceRunnable (tracing not included, using TraceRunnable instead of normal Runnable)
+	// Version 2b - TraceableScheduledExecutorService
+	// @Resource(name = "kafkaProducerScheduledExecutorService")
+	// ScheduledExecutorService scheduledExecutorService;
 
-	@Autowired
-	Tracing tracing;
+	// @Autowired
+	// Tracing tracing;
 
 	/**
 	 * Start sending messages to Kafka for specified operation
@@ -147,7 +145,16 @@ public class KafkaProducerController {
 		final long rate = runnableTask.getRate();
 		log.info("Starting Kafka Producer {} with a rate of {} ms...", operation, rate);
 
-		// Version 1 - TaskScheduler + TraceRunnable
+		// Version 1 - TaskScheduler
+		getScheduledFuturesMap().put(
+				operation,
+				getTaskScheduler().scheduleAtFixedRate(
+						runnableTask,
+						rate
+				)
+		);
+
+		// Version 2a - TaskScheduler + TraceRunnable (tracing not included, using TraceRunnable instead of normal Runnable)
 		// getScheduledFuturesMap().put(
 		// 		operation,
 		// 		getTaskScheduler().scheduleAtFixedRate(
@@ -156,11 +163,11 @@ public class KafkaProducerController {
 		// 		)
 		// );
 
-		// Version 2 - TraceableScheduledExecutorService
-		getScheduledFuturesMap().put(
-				operation,
-				getScheduledExecutorService().scheduleAtFixedRate(runnableTask, 0L, rate, TimeUnit.MILLISECONDS)
-		);
+		// Version 2b - TraceableScheduledExecutorService
+		// getScheduledFuturesMap().put(
+		// 		operation,
+		// 		getScheduledExecutorService().scheduleAtFixedRate(runnableTask, 0L, rate, TimeUnit.MILLISECONDS)
+		// );
 	}
 
 	protected void cancelTask(final KafkaProducerOperation operation, final ScheduledFuture<?> scheduledFuture) {

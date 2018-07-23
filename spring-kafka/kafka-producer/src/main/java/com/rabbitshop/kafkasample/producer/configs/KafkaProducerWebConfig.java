@@ -12,7 +12,6 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.sleuth.instrument.async.TraceableScheduledExecutorService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -51,7 +50,7 @@ public class KafkaProducerWebConfig extends WebMvcConfigurationSupport {
 		return formattingConversionService;
 	}
 
-	// Version 1 - TaskScheduler (tracing not included, using TraceRunnable instead of normal Runnable)
+	// Version 1 - TaskScheduler
 	@Bean("kafkaProducerTaskScheduler")
 	public ThreadPoolTaskScheduler createThreadPoolTaskScheduler() {
 
@@ -64,18 +63,19 @@ public class KafkaProducerWebConfig extends WebMvcConfigurationSupport {
 		return threadPoolTaskScheduler;
 	}
 
-	// Version 2 (uses Version 1) - ScheduledExecutorService (tracing already included)
-	@Bean("kafkaProducerScheduledExecutorService")
-	@Resource(name = "kafkaProducerTaskScheduler")
-	public TraceableScheduledExecutorService executor(final ThreadPoolTaskScheduler threadPoolTaskScheduler) {
-
-		log.debug("Creating TraceableScheduledExecutorService...");
-
-		return new TraceableScheduledExecutorService(
-				getBeanFactory(),
-				threadPoolTaskScheduler.getScheduledExecutor()
-		);
-	}
+	// Version 2a (uses Version 1) - TaskScheduler + TraceRunnable (tracing not included, using TraceRunnable instead of normal Runnable)
+	// Version 2b (uses Version 1) - ScheduledExecutorService (tracing already included)
+	// @Bean("kafkaProducerScheduledExecutorService")
+	// @Resource(name = "kafkaProducerTaskScheduler")
+	// public TraceableScheduledExecutorService executor(final ThreadPoolTaskScheduler threadPoolTaskScheduler) {
+	//
+	// 	log.debug("Creating TraceableScheduledExecutorService...");
+	//
+	// 	return new TraceableScheduledExecutorService(
+	// 			getBeanFactory(),
+	// 			threadPoolTaskScheduler.getScheduledExecutor()
+	// 	);
+	// }
 
 	@Bean("kafkaProducerRunnableTasksMap")
 	@Autowired(required = false)

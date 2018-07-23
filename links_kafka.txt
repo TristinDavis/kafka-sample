@@ -10,9 +10,12 @@ https://www.tutorialspoint.com/apache_kafka/apache_kafka_basic_operations.htm
 https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes
 https://www.codenotfound.com/categories/#spring-kafka
 http://www.baeldung.com/spring-kafka
+https://memorynotfound.com/spring-kafka-json-serializer-deserializer-example/
+https://memorynotfound.com/spring-kafka-adding-custom-header-kafka-message-example/
 
 IN PROGRESS
-https://memorynotfound.com/spring-kafka-adding-custom-header-kafka-message-example/
+https://memorynotfound.com/spring-kafka-and-spring-boot-configuration-example/
+https://memorynotfound.com/spring-kafka-forwarding-listener-results-using-sendto/
 
 TODO
 https://docs.spring.io/spring-kafka/reference/htmlsingle/
